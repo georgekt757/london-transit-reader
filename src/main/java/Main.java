@@ -1,5 +1,5 @@
 /*
-    london-transit-reader - cli program that 
+    london-transit-reader - cli program that gets tfl line status
     Copyright (C) 2026  georgekt757
 
     This program is free software: you can redistribute it and/or modify
