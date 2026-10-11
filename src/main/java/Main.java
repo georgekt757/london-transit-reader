@@ -15,6 +15,9 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
+import java.io.IOException;
+import java.net.URISyntaxException;
+
 import api.TflApi;
 
 public class Main {
@@ -45,7 +48,7 @@ public class Main {
         System.out.println("--help, -h     - Prints this help text");
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException, URISyntaxException {
         TflApi tflApi = new TflApi();
 
         // If no arguments given, program simply outputs the status of all TfL rail services

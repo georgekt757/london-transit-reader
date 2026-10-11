@@ -18,18 +18,28 @@
 
 package api;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
+import com.google.gson.Gson;
+
 public class TflApi {
     private StringBuilder arguments;
+    private String jsonResponse;
 
     public TflApi() {
         this.arguments = new StringBuilder(20);
     }
 
-    public void allLines() {
+    public void allLines() throws IOException, InterruptedException, URISyntaxException {
         // Passes every possible id to the TfL API. The max is 20, and 20 are here. If they add
         // more in the future, it may be worth sending two or more separate GET requests
         this.arguments.append("bakerloo,central,circle,district,hammersmith-city,jubilee,metropolitan,northern,piccadilly,victoria,waterloo-city,liberty,lioness,mildmay,suffragette,weaver,windrush,dlr,elizabeth,tram");
-        System.out.println(arguments); // replace with GET method here once it is created
+        getRequest(arguments);
     }
 
     public void selectLines(String[] lines) {
@@ -38,5 +48,12 @@ public class TflApi {
             this.arguments.append(s).append(",");
         }
         System.out.println(arguments);// replace with GET method here once it is created
+    }
+
+    public void getRequest(StringBuilder lines) throws IOException, InterruptedException, URISyntaxException {
+        Gson gson = new Gson();
+        HttpClient httpClient = HttpClient.newHttpClient();
+        HttpRequest getRequest = HttpRequest.newBuilder().uri(new URI("https://api.tfl.gov.uk/Line/"+lines+"/Status")).GET().build();
+        HttpResponse<String> getResponse = httpClient.send(getRequest, HttpResponse.BodyHandlers.ofString());
     }
 }
