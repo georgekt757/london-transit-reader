@@ -18,29 +18,25 @@
 
 package api;
 
-import java.util.ArrayList;
-
 public class TflApi {
-    private ArrayList<String> chosenLines;
-    private String arguments;
+    private StringBuilder arguments;
 
     public TflApi() {
-        this.chosenLines = new ArrayList<>();
-        this.arguments = "";
+        this.arguments = new StringBuilder(20);
     }
 
     public void allLines() {
         // Passes every possible id to the TfL API. The max is 20, and 20 are here. If they add
         // more in the future, it may be worth sending two or more separate GET requests
-        this.arguments = "bakerloo,central,circle,district,hammersmith-city,jubilee,metropolitan,northern,piccadilly,victoria,waterloo-city,liberty,lioness,mildmay,suffragette,weaver,windrush,dlr,elizabeth,tram";
+        this.arguments.append("bakerloo,central,circle,district,hammersmith-city,jubilee,metropolitan,northern,piccadilly,victoria,waterloo-city,liberty,lioness,mildmay,suffragette,weaver,windrush,dlr,elizabeth,tram");
         // put GET method here once it is created
     }
 
     public void selectLines(String[] lines) {
         for (String s : lines) {
             // Concatenate the strings from the array args (called lines here) and put that in the GET method
-            arguments.join(s + ",");
-            System.out.println(arguments); // temporary, replace with GET method
+            this.arguments.append(s).append(",");
+            // put GET method here once it is created
         }
     }
 }

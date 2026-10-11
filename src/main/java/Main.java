@@ -25,7 +25,8 @@ public class Main {
         // by sending all ids to Status
         if (args.length == 0) {
             tflApi.allLines();
-            System.out.println("All"); // temporary, replace with actual data
+        } else if (args[0].equals("help")) {
+            System.out.println("Help printout coming soon!");
         } else {
             tflApi.selectLines(args);
         }
