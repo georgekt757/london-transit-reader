@@ -18,8 +18,21 @@
 
 package api;
 
-import com.google.gson.Gson;
+import java.util.ArrayList;
 
 public class TflApi {
-    
+    private ArrayList<String> chosenLines;
+    private String arguments;
+
+    public TflApi() {
+        this.chosenLines = new ArrayList<>();
+        this.arguments = "";
+    }
+
+    public void allLines() {
+        // Passes every possible id to the TfL API. The max is 20, and 20 are here. If they add
+        // more in the future, it may be worth sending two or more separate GET requests
+        this.arguments = "bakerloo,central,circle,district,hammersmith-city,jubilee,metropolitan,northern,piccadilly,victoria,waterloo-city,liberty,lioness,mildmay,suffragette,weaver,windrush,dlr,elizabeth,tram";
+        // put GET method here once it is created
+    }
 }
