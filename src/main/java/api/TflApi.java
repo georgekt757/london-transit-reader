@@ -42,18 +42,23 @@ public class TflApi {
         getRequest(arguments);
     }
 
-    public void selectLines(String[] lines) {
+    public void selectLines(String[] lines) throws IOException, InterruptedException, URISyntaxException {
         for (String s : lines) {
             // Concatenate the strings from the array args (called lines here) and put that in the GET method
             this.arguments.append(s).append(",");
         }
-        System.out.println(arguments);// replace with GET method here once it is created
+        getRequest(arguments);
     }
 
     public void getRequest(StringBuilder lines) throws IOException, InterruptedException, URISyntaxException {
         Gson gson = new Gson();
+        // Code sets up for HTTP GET request, and then makes it. The respons is in JSON, which needs to be parsed correctly
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest getRequest = HttpRequest.newBuilder().uri(new URI("https://api.tfl.gov.uk/Line/"+lines+"/Status")).GET().build();
         HttpResponse<String> getResponse = httpClient.send(getRequest, HttpResponse.BodyHandlers.ofString());
+        
+        // Converts response into a String, which can be parsed as JSON
+        jsonResponse = getResponse.body();
+        System.out.println(jsonResponse); // temporary, replace with data presented in a nice-looking format
     }
 }
