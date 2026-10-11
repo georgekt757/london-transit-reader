@@ -16,17 +16,44 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 import api.TflApi;
+
 public class Main {
+    static void printHelp() {
+        System.out.println("London Transit Reader Alpha-1");
+        System.out.println("Main [lines] - Outputs the status of the lines input as arguments separated by spaces. You can put as many of these as you want. If no arguments are given, the status of all lines will be returned.");
+        System.out.println("               The argument options are:");
+        System.out.println("               bakerloo         - Bakerloo line");
+        System.out.println("               central          - Central line");
+        System.out.println("               circle           - Circle line");
+        System.out.println("               district         - District line");
+        System.out.println("               hammersmith-city - Hammersmith & City line");
+        System.out.println("               jubilee          - Jubilee line");
+        System.out.println("               metropolitan     - Metropolitan line");
+        System.out.println("               northern         - Northern line");
+        System.out.println("               piccadilly       - Piccadilly line");
+        System.out.println("               victoria         - Victoria line");
+        System.out.println("               waterloo-city    - Waterloo & City line");
+        System.out.println("               liberty          - Liberty line");
+        System.out.println("               lioness          - Lioness line");
+        System.out.println("               mildmay          - Mildmay line");
+        System.out.println("               suffragette      - Suffragette line");
+        System.out.println("               weaver           - Weaver line");
+        System.out.println("               windrush         - Windrush line");
+        System.out.println("               dlr              - Docklands Light Railway");
+        System.out.println("               elizabeth        - Elizabeth line");
+        System.out.println("               tram             - London Trams");
+        System.out.println("--help, -h     - Prints this help text");
+    }
+
     public static void main(String[] args) {
-        System.out.println("London Transit Reader Alpha");
         TflApi tflApi = new TflApi();
 
         // If no arguments given, program simply outputs the status of all TfL rail services
         // by sending all ids to Status
         if (args.length == 0) {
             tflApi.allLines();
-        } else if (args[0].equals("help")) {
-            System.out.println("Help printout coming soon!");
+        } else if (args[0].equals("--help") || args[0].equals("-h")) {
+            printHelp();
         } else {
             tflApi.selectLines(args);
         }
