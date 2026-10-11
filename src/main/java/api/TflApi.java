@@ -29,14 +29,14 @@ public class TflApi {
         // Passes every possible id to the TfL API. The max is 20, and 20 are here. If they add
         // more in the future, it may be worth sending two or more separate GET requests
         this.arguments.append("bakerloo,central,circle,district,hammersmith-city,jubilee,metropolitan,northern,piccadilly,victoria,waterloo-city,liberty,lioness,mildmay,suffragette,weaver,windrush,dlr,elizabeth,tram");
-        // put GET method here once it is created
+        System.out.println(arguments); // replace with GET method here once it is created
     }
 
     public void selectLines(String[] lines) {
         for (String s : lines) {
             // Concatenate the strings from the array args (called lines here) and put that in the GET method
             this.arguments.append(s).append(",");
-            // put GET method here once it is created
         }
+        System.out.println(arguments);// replace with GET method here once it is created
     }
 }
