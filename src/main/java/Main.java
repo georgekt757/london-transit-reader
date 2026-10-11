@@ -19,7 +19,7 @@ import api.TflApi;
 
 public class Main {
     static void printHelp() {
-        System.out.println("London Transit Reader Alpha-1");
+        System.out.println("London Transit Reader v0.1.0-alpha");
         System.out.println("Main [lines] - Outputs the status of the lines input as arguments separated by spaces. You can put as many of these as you want. If no arguments are given, the status of all lines will be returned.");
         System.out.println("               The argument options are:");
         System.out.println("               bakerloo         - Bakerloo line");
