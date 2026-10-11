@@ -35,4 +35,12 @@ public class TflApi {
         this.arguments = "bakerloo,central,circle,district,hammersmith-city,jubilee,metropolitan,northern,piccadilly,victoria,waterloo-city,liberty,lioness,mildmay,suffragette,weaver,windrush,dlr,elizabeth,tram";
         // put GET method here once it is created
     }
+
+    public void selectLines(String[] lines) {
+        for (String s : lines) {
+            // Concatenate the strings from the array args (called lines here) and put that in the GET method
+            arguments.join(s + ",");
+            System.out.println(arguments); // temporary, replace with GET method
+        }
+    }
 }
