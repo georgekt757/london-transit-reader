@@ -6,7 +6,7 @@
 
     <groupId>io.github.georgekt757</groupId>
     <artifactId>londontransitreader</artifactId>
-    <version>v0.1.0-alpha</version>
+    <version>v0.2.0-alpha</version>
 
     <properties>
         <maven.compiler.source>25</maven.compiler.source>
