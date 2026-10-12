@@ -21,6 +21,8 @@ package api;
 import java.util.List;
 
 public class Line {
+    // A list is needed because TfL's API returns an array of JSONs rather than
+    // a single JSON. This also explains the detour involving Type needed in ./TfLApi.java
     private String id;
     private String name;
     private List<LineStatus> lineStatuses;

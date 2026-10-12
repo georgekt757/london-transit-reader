@@ -19,6 +19,8 @@
 package api;
 
 public class LineStatus {
+    // JSON for JSON! Since there's a nested JSON sequence, this is the class
+    // needed to interact with that.
     private int id;
     private int statusSeverity;
     private String statusSeverityDescription;

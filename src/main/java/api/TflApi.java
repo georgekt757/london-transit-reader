@@ -19,13 +19,16 @@
 package api;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.List;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 public class TflApi {
     private StringBuilder arguments;
@@ -62,8 +65,23 @@ public class TflApi {
     }
 
     private void parseJson(String jsonResponse) {
-        Gson data = new Gson();
-        System.out.println(jsonResponse); // temporary, replace with data presented in a nice-looking format
-        data.toJson(jsonResponse);
+        Gson gson = new Gson();
+        /*
+          Type interface, TypeToken, and an anonymous class all needed here as the JSON data
+          is actually an array of JSON, so extra steps needs to be taken. Lines.class alone,
+          as was originally planned, wouldn't be good enough. Gson's TypeToken can capture the
+          full generic type information (List<Line>) to allow fromJson to be able to deserialise
+          the JSON array given by TfL into a List of Line objects. As for the anonymous class,
+          it is what lets Gson's TypeToken capture the generic type information.
+        */
+        Type lineListType = new TypeToken<List<Line>>() {}.getType();
+        List<Line> lines = gson.fromJson(jsonResponse, lineListType);
+
+        for (Line line : lines) {
+            System.out.print(line.getName());
+            for (LineStatus status : line.getLineStatuses()) {
+                System.out.println(" - " + status.getStatusSeverityDescription());
+            }
+        }
     }
 }
