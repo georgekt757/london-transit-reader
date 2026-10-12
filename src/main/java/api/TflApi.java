@@ -62,7 +62,8 @@ public class TflApi {
     }
 
     private void parseJson(String jsonResponse) {
-        Gson gson = new Gson();
+        Gson data = new Gson();
         System.out.println(jsonResponse); // temporary, replace with data presented in a nice-looking format
+        data.toJson(jsonResponse);
     }
 }
