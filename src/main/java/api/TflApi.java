@@ -78,9 +78,12 @@ public class TflApi {
         List<Line> lines = gson.fromJson(jsonResponse, lineListType);
 
         for (Line line : lines) {
-            System.out.print(line.getName());
             for (LineStatus status : line.getLineStatuses()) {
-                System.out.println(" - " + status.getStatusSeverityDescription());
+                if (status.getStatusSeverity() == 10) {
+                    System.out.println(line.getName() + " - " + status.getStatusSeverityDescription());
+                } else {
+                    System.out.println(status.getReason());
+                }
             }
         }
     }

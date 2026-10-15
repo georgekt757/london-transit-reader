@@ -24,6 +24,7 @@ public class LineStatus {
     private int id;
     private int statusSeverity;
     private String statusSeverityDescription;
+    private String reason;
 
     public int getId() {
         return this.id;
@@ -35,6 +36,10 @@ public class LineStatus {
 
     public String getStatusSeverityDescription() {
         return this.statusSeverityDescription;
+    }
+
+    public String getReason() {
+        return this.reason;
     }
 
     // will also need to add method for disruption reason i think
