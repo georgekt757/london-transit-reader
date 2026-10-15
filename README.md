@@ -1,8 +1,5 @@
 # london-transit-reader
 
-**Note that there currently is no release for the latest version as it appears I need to bundle the
-Gson library with the JAR. I will most probably do this tomorrow.**
-
 This program retrieves London rail transit data by reading from TfL's API, and then returns it in a
 neat, user-friendly format. It's able to get the status of all London Underground, London
 Overground, Docklands Light Railway, Trams, and Elizabeth line services.
